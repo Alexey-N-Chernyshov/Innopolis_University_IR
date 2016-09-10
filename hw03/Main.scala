@@ -54,7 +54,7 @@ class Normalizer {
   }
 }
 
-class AbstractStemmer {
+trait AbstractStemmer {
   def stem(word: String): String = {
     word
   }
