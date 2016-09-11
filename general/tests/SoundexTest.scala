@@ -1,11 +1,10 @@
-package com.ir
-
+import com.github.alexey_n_chernyshov.iu.ir.Soundex
 import org.scalatest._
 
 /**
   * Created by Yex on 10-Sep-16.
   */
-class SoundexSpec extends FlatSpec with Matchers {
+class SoundexTest extends FlatSpec with Matchers {
   "A Soundex" should "map word into one letter + 3 digits form" in {
     val soundex = Soundex
     assert(soundex.soundex("Hermann") == "H655")

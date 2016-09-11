@@ -1,4 +1,4 @@
-package com.ir
+package com.github.alexey_n_chernyshov.iu.ir
 
 object Soundex {
   //Classes of equivalence of letters
