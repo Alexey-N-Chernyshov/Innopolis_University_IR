@@ -6,7 +6,9 @@ package com.github.alexey_n_chernyshov.iu.ir
 
 import scala.math.min
 
+/** Determines edit distance between two strings. */
 object EditDistance {
+  /** Returns edit distance between two strings. */
   def editDist[A](a: Iterable[A], b: Iterable[A]) =
     ((0 to b.size).toList /: a)((prev, x) =>
       (prev zip prev.tail zip b).scanLeft(prev.head + 1) {

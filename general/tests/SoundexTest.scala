@@ -8,6 +8,7 @@ class SoundexTest extends FlatSpec with Matchers {
   "A Soundex" should "map word into one letter + 3 digits form" in {
     val soundex = Soundex
     assert(soundex.soundex("Hermann") == "H655")
+    assert(soundex.soundex("Herrmann") == "H655")
     assert(soundex.soundex("Herman") == "H655")
     assert(soundex.soundex("Chernyshov") == "C652")
   }

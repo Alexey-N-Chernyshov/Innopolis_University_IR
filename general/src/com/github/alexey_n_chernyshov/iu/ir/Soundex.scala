@@ -1,5 +1,6 @@
 package com.github.alexey_n_chernyshov.iu.ir
 
+/** Indexes words by sounds, as pronounced in English. */
 object Soundex {
   //Classes of equivalence of letters
   val classOfZero = Set('A', 'E', 'I', 'O', 'U', 'H', 'W', 'Y')
@@ -10,7 +11,7 @@ object Soundex {
   val classOfFive = Set('M', 'N')
   val classOfSix = Set('R')
 
-  // recursively eliminate consecutive duplicates
+  /** Returns string with eliminated consecutive duplicates. */
   def eliminateConsecutiveDuplicates(s: String): String = {
     if (s == null) return null
     if (s.length() <= 1) return s
@@ -20,12 +21,18 @@ object Soundex {
       s.head + eliminateConsecutiveDuplicates(s.tail)
   }
 
-  // map word into one letter + 3 digits form
+  /**
+    * Maps word into "one letter + 3 digits" form.
+    *
+    * @param s string to be indexed
+    * @return index for input string
+    */
   def soundex(s: String): String = {
     if (s == null || s.isEmpty)
       return "0000"
 
-    var res = s.toUpperCase().substring(1) // at first we proceed rest of string (1, n)
+    // retain the first letter
+    var res = s.toUpperCase().substring(1)
 
     // replace s(1, n) letters with corresponding digits
     res = res.map(c =>
@@ -37,10 +44,9 @@ object Soundex {
       if (classOfFive(c)) '5' else
       if (classOfSix(c)) '6' else c
     )
+    res = eliminateConsecutiveDuplicates(res)
 
-    eliminateConsecutiveDuplicates(res)
-
-    // remove zeroes, pad with trailing zeroes, get first 3 digits and add first character in uppercase
+    // remove zeroes, pad with trailing zeroes, get first 3 digits and retain first character in uppercase
     s.toUpperCase()(0) + (res.filter(_ != '0') + "0000").substring(0, 3)
   }
 }
