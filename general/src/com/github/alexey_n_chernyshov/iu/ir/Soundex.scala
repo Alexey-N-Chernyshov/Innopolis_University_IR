@@ -1,7 +1,12 @@
+/**
+  * @author Yex
+  */
+
 package com.github.alexey_n_chernyshov.iu.ir
 
 /** Indexes words by sounds, as pronounced in English. */
 object Soundex {
+
   //Classes of equivalence of letters
   val classOfZero = Set('A', 'E', 'I', 'O', 'U', 'H', 'W', 'Y')
   val classOfOne = Set('B', 'F', 'P', 'V')
@@ -49,4 +54,5 @@ object Soundex {
     // remove zeroes, pad with trailing zeroes, get first 3 digits and retain first character in uppercase
     s.toUpperCase()(0) + (res.filter(_ != '0') + "0000").substring(0, 3)
   }
+
 }
