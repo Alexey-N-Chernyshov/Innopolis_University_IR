@@ -67,11 +67,11 @@ object QueryParser extends JavaTokenParsers  {
   }
 
   /** Returns AST built on the given query. */
-  def buildAST(query: String): Unit = {
-    parse(query, query.trim) match {
-      case Success(matched, _) => println(matched)
-      case Failure(msg, _) => println("Failure: " + msg)
-      case Error(msg, _) => println("ERROR: " + msg)
+  def buildAST(queryString: String): QueryAbstractSyntaxTreeNode = {
+    parse(query, queryString.trim) match {
+      case Success(matched, _) => matched
+      case Failure(msg, _) => throw new IllegalArgumentException("Failure: " + msg)
+      case Error(msg, _) => throw new IllegalArgumentException("ERROR: " + msg)
     }
   }
 

@@ -10,6 +10,7 @@ case class QueryAbstractSyntaxTreeOr(left: QueryAbstractSyntaxTreeNode, right: Q
   /**
     * Accepts visitor.
     */
-  override def accept(): Unit = ???
-
+  override def accept(visitor: AbstractSyntaxTreeVisitor): Unit = {
+    visitor.visit(this)
+  }
 }

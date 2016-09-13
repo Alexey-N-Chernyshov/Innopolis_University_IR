@@ -24,4 +24,9 @@ trait SearchIndex {
     */
   def getPositions(term: String): Set[SearchIndexPosition]
 
+  /** Returns all terms in index. */
+  def getAllTerms(): Set[String]
+
+  def getAllPositions(): Set[SearchIndexPosition]
+
 }

@@ -9,6 +9,7 @@ case class QueryAbstractSyntaxTreeTerm(value: String) extends QueryAbstractSynta
   /**
     * Accepts visitor.
     */
-  override def accept(): Unit = ???
-
+  override def accept(visitor: AbstractSyntaxTreeVisitor): Unit = {
+    visitor.visit(this)
+  }
 }

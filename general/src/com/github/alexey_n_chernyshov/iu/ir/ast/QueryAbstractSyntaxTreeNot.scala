@@ -9,6 +9,8 @@ case class QueryAbstractSyntaxTreeNot(value: QueryAbstractSyntaxTreeNode) extend
   /**
     * Accepts visitor.
     */
-  override def accept(): Unit = ???
+  override def accept(visitor: AbstractSyntaxTreeVisitor): Unit = {
+    visitor.visit(this)
+  }
 
 }

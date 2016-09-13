@@ -34,4 +34,15 @@ class InvertedIndex extends SearchIndex {
     internalIndex(term)
   }
 
+  /** Returns all terms in index. */
+  override def getAllTerms(): Set[String] = {
+    internalIndex.keys.toSet
+  }
+
+  override def getAllPositions(): Set[SearchIndexPosition] = {
+    var res = Set[SearchIndexPosition]()
+    internalIndex.values.foreach(s => res = res union s)
+    res
+  }
+
 }
