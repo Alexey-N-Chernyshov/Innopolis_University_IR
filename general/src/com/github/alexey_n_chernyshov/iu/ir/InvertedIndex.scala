@@ -45,4 +45,8 @@ class InvertedIndex extends SearchIndex {
     res
   }
 
+  override def toString(): String = {
+    internalIndex.toString()
+  }
+
 }
