@@ -18,24 +18,23 @@ object PorterStemmer {
   var result = ""
 
   // Just recode the existing stuff, then go through and refactor with some intelligence.
-  def cons( i: Int ): Boolean =
-  {
-    var ch = result( i )
+  def cons(i: Int): Boolean = {
+    var ch = result(i)
 
     // magic!
     var vowels = "aeiou"
 
     // multi return. yuck
-    if ( vowels.contains( ch ) )
+    if (vowels.contains(ch))
       return false
 
-    if ( ch == 'y'  ) {
-      if ( i == 0 ) {
+    if (ch == 'y') {
+      if (i == 0) {
         return true
       }
       else {
         // loop it!
-        return !cons( i - 1 )
+        return !cons(i - 1)
       }
     }
 
@@ -43,11 +42,11 @@ object PorterStemmer {
   }
 
   // Add via letter or entire word
-  def add( ch: Char ) = {
+  def add(ch: Char) = {
     result += ch
   }
 
-  def add( word: String ) = {
+  def add(word: String) = {
     result = word
   }
 
@@ -64,18 +63,17 @@ object PorterStemmer {
    * I think this can be recoded far more neatly.
    */
   def calcM(s:String): Int = {
-    var l = s.length
+    val l = s.length
     var count = 0
     var currentConst = false
 
-    for ( c <- 0 to l-1 ) {
-      if ( cons( c ) ) {
-        if (!currentConst && c != 0 ) {
+    for (c <- 0 to l - 1) {
+      if (cons(c)) {
+        if (!currentConst && c != 0) {
           count += 1
         }
         currentConst = true
-      }
-      else {
+      } else {
         currentConst = false
       }
     }
@@ -85,8 +83,8 @@ object PorterStemmer {
 
   // removing the suffix 's', does a vowel exist?'
   def vowelInStem(s: String): Boolean = {
-    for (i <- 0 to result.length -1 - s.length ) {
-      if ( !cons( i ) ) {
+    for (i <- 0 to result.length - 1 - s.length) {
+      if (!cons(i)) {
         return true
       }
     }
@@ -95,15 +93,15 @@ object PorterStemmer {
 
   /* doublec(j) is true <=> j,(j-1) contain a double consonant. */
   def doublec(): Boolean = {
-    var l = result.length - 1
+    val l = result.length - 1
 
-    if ( l < 1 )
+    if (l < 1)
       return false
 
-    if ( result(l) != result(l-1) )
+    if (result(l) != result(l - 1))
       return false
 
-    return cons( l )
+    return cons(l)
   }
 
   /* cvc(i) is true <=> i-2,i-1,i has the form consonant - vowel - consonant
@@ -113,16 +111,13 @@ object PorterStemmer {
         cav(e), lov(e), hop(e), crim(e), but
         snow, box, tray.
   */
-  def cvc( s:String): Boolean = {
-    var i = result.length - 1 - s.length
-    if (i < 2 || !cons(i) || cons(i-1) || !cons(i-2))
-      return false;
+  def cvc(s: String): Boolean = {
+    val i = result.length - 1 - s.length
+    if (i < 2 || !cons(i) || cons(i - 1) || !cons(i - 2))
+      return false
 
-    var ch = result(i)
-
-    var vals = "wxy"
-
-    if ( vals.contains( ch ) )
+    val ch = result(i)
+    if ("wxy".contains(ch))
       return false
 
     return true
@@ -130,15 +125,15 @@ object PorterStemmer {
 
 
   // returns true if it did the change.
-  def replacer( orig: String, replace:String, checker: Int => Boolean ): Boolean = {
-    var l = result.length
-    var origLength = orig.length
+  def replacer(orig: String, replace: String, checker: Int => Boolean): Boolean = {
+    val l = result.length
+    val origLength = orig.length
     var res = false
 
-    if ( result.endsWith( orig ) ) {
-      var n = result.substring( 0, l - origLength  )
+    if (result.endsWith(orig)) {
+      val n = result.substring(0, l - origLength)
 
-      var m = calcM( n )
+      val m = calcM(n)
       if ( checker( m ) ) {
         result = n + replace
       }
@@ -151,9 +146,9 @@ object PorterStemmer {
 
   // process the list of tuples to find which prefix matches the case.
   // checker is the conditional checker for m.
-  def processSubList( l:List[(String, String)], checker: Int=>Boolean ): Boolean = {
+  def processSubList(l: List[(String, String)], checker: Int=>Boolean): Boolean = {
     l.foreach { v =>
-      if (replacer( v._1, v._2, checker ))
+      if (replacer(v._1, v._2, checker))
         return true
     }
     return false
@@ -161,26 +156,25 @@ object PorterStemmer {
 
   def step1() {
     var l = result.length
-    var m = calcM( result )
+    var m = calcM(result)
 
     // step 1a
-    var vals = List( ("sses", "ss"), ("ies","i"), ("ss","ss"), ("s", "") )
-    processSubList( vals, _ >= 0)
+    var vals = List(("sses", "ss"), ("ies","i"), ("ss","ss"), ("s", ""))
+    processSubList(vals, _ >= 0 )
 
     // step 1b
-    if (!(replacer( "eed", "ee", _>0))) {
+    if (!(replacer("eed", "ee", _>0))) {
       if ((vowelInStem("ed") && replacer("ed", "", _>=0)) || (vowelInStem("ing") && replacer("ing", "", _>=0))) {
-        vals = List( ("at", "ate"), ("bl","ble"), ("iz","ize"))
+        vals = List(("at", "ate"), ("bl","ble"), ("iz","ize"))
 
-        if (!processSubList( vals, _>=0 )) {
+        if (!processSubList(vals, _>=0)) {
           // if this isn't done, then it gets more confusing.
 
-          m = calcM( result )
-          var last = result(result.length - 1)
-          if ( doublec() && !"lsz".contains( last ) ) {
-            result = result.substring( 0, result.length - 1 )
-          }
-          else if ( m == 1 && cvc("") ) {
+          m = calcM(result)
+          val last = result(result.length - 1)
+          if (doublec() && !"lsz".contains(last)) {
+            result = result.substring(0, result.length - 1)
+          } else if ( m == 1 && cvc("") ) {
             result = result + "e"
           }
         }
@@ -192,56 +186,52 @@ object PorterStemmer {
   }
 
 
-  def step2( ) = {
-    var vals = List( ("ational", "ate"),("tional","tion"),("enci","ence"),("anci","ance"),("izer","ize"),("bli","ble"),("alli", "al"),
-      ("entli","ent"),("eli","e"),("ousli","ous"),("ization","ize"),("ation","ate"),("ator","ate"),("alism","al"),
-      ("iveness","ive"),("fulness","ful"),("ousness", "ous"),("aliti", "al"),("iviti","ive"),("biliti", "ble"),("logi", "log"))
-    processSubList( vals, _>0 )
+  def step2() = {
+    val vals = List(("ational", "ate"), ("tional","tion"), ("enci","ence"), ("anci","ance"), ("izer","ize"),
+      ("bli","ble"), ("alli", "al"), ("entli","ent"), ("eli","e"), ("ousli","ous"), ("ization","ize"), ("ation","ate"),
+      ("ator","ate"), ("alism","al"), ("iveness","ive"), ("fulness","ful"), ("ousness", "ous"), ("aliti", "al"),
+      ("iviti","ive"),("biliti", "ble"),("logi", "log"))
+    processSubList(vals, _>0)
   }
 
-  def step3( ) = {
-    var vals = List( ("icate", "ic"),("ative",""),("alize","al"),("iciti","ic"),("ical","ic"),("ful",""),("ness",""))
-    processSubList( vals, _>0 )
+  def step3() = {
+    val vals = List( ("icate", "ic"), ("ative",""), ("alize","al"), ("iciti","ic"), ("ical","ic"), ("ful",""),
+      ("ness",""))
+    processSubList(vals, _>0)
   }
 
-  def step4( ) =
-  {
-
+  def step4() = {
     // first part.
-    var vals = List( ("al",""),("ance",""),("ence",""),("er",""),("ic",""),("able",""),("ible",""),("ant",""),("ement",""),
-      ("ment",""),("ent",""))
-
+    val vals = List(("al",""), ("ance",""), ("ence",""), ("er",""), ("ic",""), ("able",""), ("ible",""), ("ant",""),
+      ("ement",""), ("ment",""), ("ent",""))
     var res = processSubList( vals, _>1 )
 
     // special part.
     if (!res) {
       if (result.length > 4) {
-        if (  result( result.length - 4  ) == 's' || result( result.length -4 ) == 't' ) {
+        if (result(result.length - 4) == 's' || result(result.length - 4) == 't') {
           res = replacer("ion", "", _>1)
-
         }
       }
     }
 
-
     // third part.
-    if ( !res ) {
-      var vals = List( ("ou",""),("ism",""),("ate",""),("iti",""),("ous",""),("ive",""),("ize",""))
-      res = processSubList( vals, _>1 )
+    if (!res) {
+      val vals = List(("ou",""), ("ism",""), ("ate",""), ("iti",""), ("ous",""), ("ive",""), ("ize",""))
+      res = processSubList(vals, _>1)
     }
   }
 
-  def step5a( ) = {
+  def step5a() = {
     var res = false
     res = replacer("e", "", _>1)
 
-    if ( !cvc("e") ) {
+    if (!cvc("e")) {
       res = replacer("e", "", _==1)
     }
   }
 
-  def step5b( ) = {
-    var res = false
+  def step5b() = {
     val m = calcM( result )
     if ( m > 1 && doublec() && result.endsWith("l") ) {
       result = result.substring(0, result.length - 1)
@@ -250,9 +240,8 @@ object PorterStemmer {
 
   /** Returns word after stemming. */
   def stem(word: String): String = {
-    add( word )
-    if ( result.length > 2 )
-    {
+    add(word)
+    if (result.length > 2) {
       step1()
       step2()
       step3()
