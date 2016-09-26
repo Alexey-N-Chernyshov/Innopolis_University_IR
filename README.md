@@ -5,3 +5,4 @@ It is a set of some classes from the course "Information Retrieval" based on the
 ## Content
 Now it has following things:
 * Boolean Retrieval (see class BooleanRetrieaval and tests)
+* Biword Retrieval (see class BiwordRetrieaval and tests)

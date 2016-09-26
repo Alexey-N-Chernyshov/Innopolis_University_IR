@@ -15,12 +15,4 @@ class BiwordIndexBuilderTest extends FlatSpec {
     assert(index.isInstanceOf[InvertedIndex])
   }
 
-  it should "list of string string to biwords" in {
-    val str = List("one", "two", "three", "four")
-    val res = BiwordIndexBuilder.splitToBiwords(str)
-    assert(res(0) == "one two")
-    assert(res(1) == "two three")
-    assert(res(2) == "three four")
-  }
-
 }

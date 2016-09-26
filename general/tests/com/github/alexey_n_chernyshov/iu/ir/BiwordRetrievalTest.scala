@@ -5,11 +5,12 @@
 package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
+
 import org.scalatest.FlatSpec
 
-class BooleanRetrievalTest extends FlatSpec {
+class BiwordRetrievalTest extends FlatSpec {
 
-  behavior of "BooleanRetrieval"
+  behavior of "BiwordRetrieval"
 
   it should "search words in corpus ex1" in {
     val doc1 = new File("data/ex1/Doc1.txt")
@@ -17,17 +18,17 @@ class BooleanRetrievalTest extends FlatSpec {
     val doc3 = new File("data/ex1/Doc3.txt")
     val doc4 = new File("data/ex1/Doc4.txt")
 
-    val booleanRetrieval = new BooleanRetrieval("data/ex1")
+    val biwordRetrieval = new BiwordRetrieval("data/ex1")
 
-    var res = booleanRetrieval.executeQuery("home")
+    var res = biwordRetrieval.executeQuery("home sales")
+
     assert(res.map(_.toString) contains doc1.toString)
     assert(res.map(_.toString) contains doc2.toString)
     assert(res.map(_.toString) contains doc3.toString)
     assert(res.map(_.toString) contains doc4.toString)
 
-    res = booleanRetrieval.executeQuery("in")
-    assert(res.map(_.toString) contains doc2.toString)
-    assert(res.map(_.toString) contains doc3.toString)
+    res = biwordRetrieval.executeQuery("new home sales")
+    assert(res.map(_.toString) contains doc1.toString)
   }
 
   it should "search words in corpus ex2" in {
@@ -36,18 +37,10 @@ class BooleanRetrievalTest extends FlatSpec {
     val doc3 = new File("data/ex2/Doc 3.txt")
     val doc4 = new File("data/ex2/Doc 4.txt")
 
-    val booleanRetrieval = new BooleanRetrieval("data/ex2")
+    val biwordRetrieval = new BiwordRetrieval("data/ex2")
 
-    var res = booleanRetrieval.executeQuery("schizophrenia AND drug")
-    assert(res.map(_.toString) contains doc1.toString)
+    var res = biwordRetrieval.executeQuery("schizophrenia drug")
     assert(res.map(_.toString) contains doc2.toString)
-
-    res = booleanRetrieval.executeQuery("NOT drug")
-    assert(res.map(_.toString) contains doc3.toString)
-    assert(res.map(_.toString) contains doc4.toString)
-
-    res = booleanRetrieval.executeQuery("for AND NOT(drug OR approach)")
-    assert(res.map(_.toString) contains doc4.toString)
   }
 
 }
