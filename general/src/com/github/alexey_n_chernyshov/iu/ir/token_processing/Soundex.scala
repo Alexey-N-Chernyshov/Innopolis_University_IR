@@ -2,7 +2,7 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir.util
+package com.github.alexey_n_chernyshov.iu.ir.token_processing
 
 /** Indexes words by sounds, as pronounced in English. */
 object Soundex {

@@ -5,6 +5,7 @@
 package com.github.alexey_n_chernyshov.iu.ir
 
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.{InvertedIndex, InvertedIndexBuilder}
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
 import org.scalatest.FlatSpec
 
 class InvertedIndexBuilderTest extends FlatSpec {
@@ -13,7 +14,9 @@ class InvertedIndexBuilderTest extends FlatSpec {
 
   it should "returns an index of corpus" in {
 
-    val index = InvertedIndexBuilder.buildIndex("data/ex1")
+    val tokenProcessor = new NoTokenProcessor()
+    val index = new InvertedIndexBuilder(tokenProcessor)
+      .buildIndex("data/ex1")
     assert(index.isInstanceOf[InvertedIndex])
   }
 

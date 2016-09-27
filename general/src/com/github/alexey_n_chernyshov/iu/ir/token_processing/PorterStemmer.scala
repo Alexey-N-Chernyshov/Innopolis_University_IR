@@ -9,7 +9,7 @@
    A few methods were borrowed from the existing Java port from the above page.
 */
 
-package com.github.alexey_n_chernyshov.iu.ir.util
+package com.github.alexey_n_chernyshov.iu.ir.token_processing
 
 /** Removes commoner morphological endings from words in English. */
 object PorterStemmer {

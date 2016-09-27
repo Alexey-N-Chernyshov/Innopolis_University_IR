@@ -4,7 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
-import com.github.alexey_n_chernyshov.iu.ir.util.Soundex
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.Soundex
 import org.scalatest.{FlatSpec, Matchers}
 
 class SoundexTest extends FlatSpec with Matchers {

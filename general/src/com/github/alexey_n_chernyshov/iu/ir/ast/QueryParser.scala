@@ -4,6 +4,8 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.ast
 
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
+
 import scala.util.parsing.combinator.JavaTokenParsers
 
 /**
@@ -17,7 +19,7 @@ import scala.util.parsing.combinator.JavaTokenParsers
   * negation => NOT term
   * word => "\d\w+"
   */
-object QueryParser extends JavaTokenParsers  {
+class QueryParser(tokenProcessor: TokenProcessor) extends JavaTokenParsers {
 
   /** Parses words. */
   def word: Parser[QueryAbstractSyntaxTreeNode] = """[\d\w]+""".r ^^ { token =>
@@ -61,7 +63,7 @@ object QueryParser extends JavaTokenParsers  {
 
   /** Processes tokens and returns terms. */
   def processToken(token: String): String = {
-    token
+    tokenProcessor.processToken(token)
   }
 
   /** Returns AST built on the given query. */

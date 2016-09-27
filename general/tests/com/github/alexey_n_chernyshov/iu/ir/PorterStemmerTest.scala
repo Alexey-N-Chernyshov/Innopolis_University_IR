@@ -4,7 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
-import com.github.alexey_n_chernyshov.iu.ir.util.PorterStemmer
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.PorterStemmer
 import org.scalatest.FlatSpec
 
 class PorterStemmerTest extends FlatSpec {
