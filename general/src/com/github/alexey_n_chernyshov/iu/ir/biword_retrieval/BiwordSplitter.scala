@@ -2,7 +2,7 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.biword_retrieval
 
 import scala.collection.mutable.ListBuffer
 

@@ -2,9 +2,11 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval
 
-import com.github.alexey_n_chernyshov.iu.ir.ast.BooleanRetrievalVisitor
+import com.github.alexey_n_chernyshov.iu.ir.ast.QueryParser
+import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndexBuilder
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 /**
   * Boolean retrieval is a classical model based on logical operations:

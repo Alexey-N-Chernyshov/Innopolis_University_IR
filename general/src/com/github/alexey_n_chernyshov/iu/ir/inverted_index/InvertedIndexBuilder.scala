@@ -2,7 +2,9 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.inverted_index
+
+import com.github.alexey_n_chernyshov.iu.ir.{IndexBuilder, SearchIndex}
 
 object InvertedIndexBuilder extends IndexBuilder {
 
@@ -15,7 +17,7 @@ object InvertedIndexBuilder extends IndexBuilder {
     val index = new InvertedIndex()
     getCollection(directory).foreach {
       file => tokenizeFile(file).foreach { term =>
-          index.addIndex(term, new FilePosition(file))
+          index.addPosition(term, new FilePosition(file))
       }
     }
     index

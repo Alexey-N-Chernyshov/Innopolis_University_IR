@@ -3,7 +3,7 @@
   * @see https://gist.github.com/tixxit/1246894/e79fa9fbeda695b9e8a6a5d858b61ec42c7a367d
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.util
 
 import scala.math.min
 

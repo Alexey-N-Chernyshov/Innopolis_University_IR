@@ -5,6 +5,8 @@
 package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
+
+import com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval.BooleanRetrieval
 import org.scalatest.FlatSpec
 
 class BooleanRetrievalTest extends FlatSpec {

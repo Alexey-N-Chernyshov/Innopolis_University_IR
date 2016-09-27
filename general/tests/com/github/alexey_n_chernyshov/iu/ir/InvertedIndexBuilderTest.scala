@@ -4,6 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
+import com.github.alexey_n_chernyshov.iu.ir.inverted_index.{InvertedIndex, InvertedIndexBuilder}
 import org.scalatest.FlatSpec
 
 class InvertedIndexBuilderTest extends FlatSpec {

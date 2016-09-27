@@ -4,6 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
+import com.github.alexey_n_chernyshov.iu.ir.biword_retrieval.BiwordSplitter
 import org.scalatest.FlatSpec
 
 class BiwordSplitterTest extends FlatSpec {

@@ -4,6 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
+import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndex
 import org.scalatest.{BeforeAndAfter, FlatSpec}
 
 class SearchIndexTest extends FlatSpec with BeforeAndAfter {
@@ -13,9 +14,9 @@ class SearchIndexTest extends FlatSpec with BeforeAndAfter {
   val doc2 = new TestPosition("doc2")
 
   before {
-    index.addIndex("apple", doc1)
-    index.addIndex("apple", doc2)
-    index.addIndex("orange", doc1)
+    index.addPosition("apple", doc1)
+    index.addPosition("apple", doc2)
+    index.addPosition("orange", doc1)
   }
 
   behavior of "A SearchIndex"

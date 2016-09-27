@@ -2,14 +2,12 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
-
-import com.github.alexey_n_chernyshov.iu.ir.ast._
+package com.github.alexey_n_chernyshov.iu.ir.ast
 
 import scala.util.parsing.combinator.JavaTokenParsers
 
 /**
-  * Parse query string according the following rules:
+  * Parse query string according the following rules and builds AST:
   *
   * query => nothing
   * nothing => or [nothing]

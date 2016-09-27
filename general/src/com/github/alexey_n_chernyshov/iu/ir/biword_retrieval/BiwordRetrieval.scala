@@ -2,7 +2,9 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.biword_retrieval
+
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 class BiwordRetrieval(corpus: String) {
 

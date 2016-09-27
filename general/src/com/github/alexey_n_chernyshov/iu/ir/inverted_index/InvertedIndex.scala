@@ -2,7 +2,9 @@
   * @author Yex
   */
 
-package com.github.alexey_n_chernyshov.iu.ir
+package com.github.alexey_n_chernyshov.iu.ir.inverted_index
+
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 /** Stores a list of occurrences of each term. */
 class InvertedIndex extends SearchIndex {
@@ -15,7 +17,7 @@ class InvertedIndex extends SearchIndex {
     * @param term     is a key of index
     * @param position is an index entry
     */
-  override def addIndex(term: String, position: SearchIndexPosition): Unit = {
+  override def addPosition(term: String, position: SearchIndexPosition): Unit = {
     if (!internalIndex.contains(term))
       internalIndex += (term -> Set(position))
     else

@@ -4,6 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
+import com.github.alexey_n_chernyshov.iu.ir.util.PorterStemmer
 import org.scalatest.FlatSpec
 
 class PorterStemmerTest extends FlatSpec {

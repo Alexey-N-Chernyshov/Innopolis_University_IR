@@ -14,7 +14,7 @@ trait SearchIndex {
     * @param term is a key of index
     * @param position is an index entry
     */
-  def addIndex(term: String, position: SearchIndexPosition): Unit
+  def addPosition(term: String, position: SearchIndexPosition): Unit
 
   /**
     * Searches the index for term.

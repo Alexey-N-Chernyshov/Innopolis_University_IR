@@ -6,6 +6,7 @@ package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
 
+import com.github.alexey_n_chernyshov.iu.ir.biword_retrieval.BiwordRetrieval
 import org.scalatest.FlatSpec
 
 class BiwordRetrievalTest extends FlatSpec {
