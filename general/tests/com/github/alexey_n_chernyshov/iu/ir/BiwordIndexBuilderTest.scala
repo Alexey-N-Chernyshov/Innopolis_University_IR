@@ -14,7 +14,7 @@ class BiwordIndexBuilderTest extends FlatSpec {
   behavior of "BiwordIndexBuilderTest"
 
   it should "returns an index of corpus" in {
-    val biwordIndexBuilder = new BiwordIndexBuilder(new NoTokenProcessor)
+    val biwordIndexBuilder = new BiwordIndexBuilder()
     val index = biwordIndexBuilder.buildIndex("data/ex1")
     assert(index.isInstanceOf[InvertedIndex])
   }

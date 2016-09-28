@@ -9,9 +9,11 @@ import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 class BiwordRetrieval(corpus: String) {
 
-  val biwordIndexBuilder = new BiwordIndexBuilder(new NoTokenProcessor)
-  var index: SearchIndex = biwordIndexBuilder.buildIndex(corpus)
+  // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()
+
+  val biwordIndexBuilder = new BiwordIndexBuilder()
+  var index: SearchIndex = biwordIndexBuilder.buildIndex(corpus)
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {
     val queryBiwords = BiwordSplitter.splitToBiwords(query.split(" ").map(tokenProcessor.processToken(_)).toList)

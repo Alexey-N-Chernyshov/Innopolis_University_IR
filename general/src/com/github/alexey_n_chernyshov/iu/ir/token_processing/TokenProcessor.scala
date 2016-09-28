@@ -5,7 +5,7 @@
 package com.github.alexey_n_chernyshov.iu.ir.token_processing
 
 /**
-  * Abstract class for token processing.
+  * Abstract class for token processing, implements layering processing.
   */
 trait TokenProcessor {
 

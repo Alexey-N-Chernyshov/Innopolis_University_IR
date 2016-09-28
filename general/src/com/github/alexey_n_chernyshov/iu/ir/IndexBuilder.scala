@@ -6,10 +6,15 @@ package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
 import java.util.Scanner
+
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
+
 import scala.collection.JavaConversions.asScalaIterator
 
 /** Builds index from given collection. */
 trait IndexBuilder {
+
+  var tokenProcessor: TokenProcessor
 
   /**
     * Returns index built on the given corpus.
