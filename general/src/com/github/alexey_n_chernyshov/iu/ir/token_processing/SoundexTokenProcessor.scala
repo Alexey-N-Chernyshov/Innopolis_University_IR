@@ -4,6 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.token_processing
 
+class SoundexTokenProcessor(parentTokenProcessor: TokenProcessor) extends TokenProcessor {
 
   /**
     * @param token - token itself
