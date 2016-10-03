@@ -11,9 +11,7 @@ import com.github.alexey_n_chernyshov.iu.ir.token_processing.{NoTokenProcessor, 
 /**
   * Index where each pair of tokens is a term.
   */
-class BiwordIndexBuilder extends IndexBuilder {
-
-  var tokenProcessor: TokenProcessor = new NoTokenProcessor()
+class BiwordIndexBuilder(var tokenProcessor: TokenProcessor) extends IndexBuilder {
 
   /** Returns index built on the given corpus.
    * @param directory path to the directory with a set of documents.

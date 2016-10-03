@@ -15,4 +15,3 @@ class SoundexTokenProcessor(parentTokenProcessor: TokenProcessor) extends TokenP
   }
 
 }
-

@@ -12,7 +12,7 @@ class BiwordRetrieval(corpus: String) {
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()
 
-  val biwordIndexBuilder = new BiwordIndexBuilder()
+  val biwordIndexBuilder = new BiwordIndexBuilder(tokenProcessor)
   var index: SearchIndex = biwordIndexBuilder.buildIndex(corpus)
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {
