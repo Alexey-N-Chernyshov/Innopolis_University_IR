@@ -4,7 +4,7 @@ It is a set of some classes from the course "Information Retrieval" based on the
 
 ## Content
 Now it has following retrieval models:
-* Boolean Retrieval (see class BooleanRetrieaval and tests)
+* Boolean Retrieval (see class BooleanRetrieavalApp, BooleanRetrieval and tests)
 * Biword Retrieval (see class BiwordRetrieaval and tests)
 
 ## Tokenization
