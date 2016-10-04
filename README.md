@@ -4,16 +4,16 @@ It is a set of some classes from the course "Information Retrieval" based on the
 
 ## Content
 Now it has following retrieval models:
-* Boolean Retrieval (see class BooleanRetrieavalApp, BooleanRetrieval and tests)
-* Biword Retrieval (see class BiwordRetrieaval and tests)
+* Boolean Retrieval - see class BooleanRetrieavalApp, BooleanRetrieval and tests
+* Biword Retrieval - see class BiwordRetrieaval and tests
 
 ## Tokenization
 
 ### Token filtering
-* NumberFilter - eliminates numbers
+* NumberFilter - eliminates numbers - see NumberFilter
 
 ### Token processing
-* Normalizer
-* Soundex
-* Porter's stemmer
+* Normalizer - see NormilizerTokenProcessor
+* Soundex - see Soundex and SoundexTokenProcessor
+* Porter's stemmer - see Stemmer and StemmerTokenProcessor
 
