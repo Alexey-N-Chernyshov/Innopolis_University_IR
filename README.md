@@ -7,6 +7,8 @@ Now it has following things:
 * Boolean Retrieval (see class BooleanRetrieaval and tests)
 * Biword Retrieval (see class BiwordRetrieaval and tests)
 
+## Tokenization
+
 ### Token filtering
 * NumberFilter - eliminates numbers
 
