@@ -7,7 +7,7 @@ Now it has following retrieval models:
 * Boolean Retrieval - supports boolean operations (AND, OR) and parentheses - see class BooleanRetrieavalApp, BooleanRetrieval and tests
 * Biword Retrieval - see class BiwordRetrieaval and tests
 
-## Tokenization
+## Preprocessing
 
 ### Token filtering
 * NumberFilter - eliminates numbers - see NumberFilter
