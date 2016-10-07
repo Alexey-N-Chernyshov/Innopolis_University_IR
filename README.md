@@ -4,8 +4,9 @@ It is a set of some classes from the course "Information Retrieval" based on the
 
 ## Content
 Now it has following retrieval models:
-* Boolean Retrieval - supports boolean operations (AND, OR) and parentheses - see class BooleanRetrieavalApp, BooleanRetrieval and tests
-* Biword Retrieval - see class BiwordRetrieaval and tests
+* Boolean retrieval - supports boolean operations (AND, OR) and parentheses - see class BooleanRetrieavalApp, BooleanRetrieval and tests
+* Biword retrieval - see class BiwordRetrieaval and tests
+* Free text retrieval - see class FreeTextRetrival and FreeTextRetrivalApp.
 
 ## Preprocessing
 
