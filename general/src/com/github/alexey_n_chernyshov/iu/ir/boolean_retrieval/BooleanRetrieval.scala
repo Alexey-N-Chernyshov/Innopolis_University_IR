@@ -7,7 +7,7 @@ package com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval
 import com.github.alexey_n_chernyshov.iu.ir.ast.QueryParser
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndexBuilder
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
-import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
+import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndex, SearchIndexPosition}
 
 /**
   * Boolean retrieval is a classical model based on logical operations:
@@ -16,7 +16,7 @@ import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
   * - NOT
   * It uses inverted index under the hood.
   */
-class BooleanRetrieval(corpus: String) {
+class BooleanRetrieval(corpus: String) extends Retrieval {
 
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()

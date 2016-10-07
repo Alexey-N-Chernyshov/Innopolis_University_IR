@@ -5,9 +5,9 @@
 package com.github.alexey_n_chernyshov.iu.ir.biword_retrieval
 
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
-import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
+import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndex, SearchIndexPosition}
 
-class BiwordRetrieval(corpus: String) {
+class BiwordRetrieval(corpus: String) extends Retrieval {
 
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()
