@@ -2,14 +2,20 @@
 
 It is a set of some classes from the course "Information Retrieval" based on the book "An Introduction to Information Retrieval" by Christopher D. Manning and others.
 
+---
+
 ## Content
 Now it has following retrieval models:
 * Boolean retrieval - supports boolean operations (AND, OR) and parentheses - see class BooleanRetrieavalApp, BooleanRetrieval and tests
 * Biword retrieval - see class BiwordRetrieaval and tests
 * Free text retrieval - see class FreeTextRetrival and FreeTextRetrivalApp.
 
+To get acquainted with model, see %ModelName%_App.
+
+---
+
 ## Datasets
-You can find some datasets to play with in general/data.
+You can find some datasets to play with in `general/data`.
 
 ## Preprocessing
 
