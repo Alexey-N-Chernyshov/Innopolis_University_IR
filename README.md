@@ -8,6 +8,9 @@ Now it has following retrieval models:
 * Biword retrieval - see class BiwordRetrieaval and tests
 * Free text retrieval - see class FreeTextRetrival and FreeTextRetrivalApp.
 
+## Datasets
+You can find some datasets to play with in general/data.
+
 ## Preprocessing
 
 ### Token filtering
