@@ -17,6 +17,7 @@ project/plugins/project/
 .worksheet
 general/out
 
+general/data/cache
 
 # =========================
 # Operating System Files
