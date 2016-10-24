@@ -36,15 +36,29 @@ class HtmlCacher(directory: String) {
     }
   }
 
+  /** Make unique path and filename by url.
+    *
+    */
+  def makeCachePath(url: String): String = {
+    val md5 = md5Hash(url)
+    var res = md5
+    var path = directory + "/"
+    for (i <- 1 to 2) {
+      path = path + res.substring(0, 1) + "/"
+      res = res.substring(1)
+    }
+    new java.io.File(path).mkdirs
+    path + res + ".txt"
+  }
+
   /** Cache html.
     *
     * @param url
     * @param html
     */
   def cache(url: String, html: String): Unit = {
-    val md5 = md5Hash(url)
     val text = processData(html)
-    val writer = new PrintWriter(directory + "/" + md5 + ".txt")// { write("file contents"); close }
+    val writer = new PrintWriter(makeCachePath(url))
     writer.write(url)
     writer.write("\n")
     writer.write(text)
