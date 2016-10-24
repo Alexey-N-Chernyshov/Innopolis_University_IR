@@ -5,6 +5,7 @@
 package com.github.alexey_n_chernyshov.iu.ir.crawler
 
 import java.io.PrintWriter
+import java.util.logging.Logger
 
 /** Caches the html to the directory. Each html will be cached into file named by md5 of it's url. Removes all tags,
   * multiple spaces and some symbols.
@@ -12,6 +13,9 @@ import java.io.PrintWriter
   * @param directory - path to cache
   */
 class HtmlCacher(directory: String) {
+
+  /** Logger */
+  val log = Logger.getLogger(this.getClass.getCanonicalName)
 
   /**
     * Get rid of tags and spaces.
@@ -36,19 +40,21 @@ class HtmlCacher(directory: String) {
     }
   }
 
-  /** Make unique path and filename by url.
-    *
+  /** Make unique path and filename by md5 of url. It has 2-level structure, each level is directory named by character
+    * of md5.
     */
   def makeCachePath(url: String): String = {
-    val md5 = md5Hash(url)
-    var res = md5
+    var res = md5Hash(url)
     var path = directory + "/"
     for (i <- 1 to 2) {
       path = path + res.substring(0, 1) + "/"
       res = res.substring(1)
     }
     new java.io.File(path).mkdirs
-    path + res + ".txt"
+    res = path + res + ".txt"
+    if (new java.io.File(res).exists())
+      log.warning("File \"" + res + "\" already exists. It'll be rewritten.")
+    res
   }
 
   /** Cache html.
