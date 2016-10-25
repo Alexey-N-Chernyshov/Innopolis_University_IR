@@ -13,6 +13,9 @@ trait RetrievalApp {
   val retrievalName: String
   val retrievalModel: Retrieval
 
+  def printResult(res: Set[SearchIndexPosition]): Unit = {
+    res.foreach(println(_))
+  }
 
   def main(args: Array[String]): Unit = {
     val corpus = "data/ex1"
@@ -24,7 +27,7 @@ trait RetrievalApp {
       val query = readLine()
       println("Result:")
       try {
-        retrievalModel.executeQuery(query).foreach(println(_))
+        printResult(retrievalModel.executeQuery(query))
       } catch {
         case e: UnsupportedOperationException => println("Wrong query: " + e)
       }
