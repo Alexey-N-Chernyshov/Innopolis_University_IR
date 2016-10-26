@@ -6,11 +6,9 @@ package com.github.alexey_n_chernyshov.iu.ir.free_text_retrieval
 
 import java.io.File
 
-import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndexPosition}
 import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.{TfIdfDocumentPosition, TfIdfIndex, TfIdfIndexBuilder}
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
-
-import scala.collection.immutable.ListMap
+import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndexPosition}
 
 /** Handles free text queries. */
 class FreeTextRetrieval(corpus: String) extends Retrieval {

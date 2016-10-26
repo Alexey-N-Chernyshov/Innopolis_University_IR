@@ -4,9 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval
 
-import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, RetrievalApp}
-
-import scala.io.StdIn.readLine
+import com.github.alexey_n_chernyshov.iu.ir.RetrievalApp
 
 object BooleanRetrievalApp extends RetrievalApp {
 

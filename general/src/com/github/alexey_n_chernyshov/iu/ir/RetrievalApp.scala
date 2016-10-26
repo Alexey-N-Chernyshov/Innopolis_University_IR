@@ -4,8 +4,6 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
-import com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval.BooleanRetrieval
-
 import scala.io.StdIn.readLine
 
 trait RetrievalApp {

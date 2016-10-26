@@ -4,8 +4,7 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.positional_index
 
-import com.github.alexey_n_chernyshov.iu.ir.SearchIndex
-import com.github.alexey_n_chernyshov.iu.ir.IndexBuilder
+import com.github.alexey_n_chernyshov.iu.ir.{IndexBuilder, SearchIndex}
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndex
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
 

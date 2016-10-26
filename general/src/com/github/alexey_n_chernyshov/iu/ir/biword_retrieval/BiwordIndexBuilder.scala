@@ -6,7 +6,7 @@ package com.github.alexey_n_chernyshov.iu.ir.biword_retrieval
 
 import com.github.alexey_n_chernyshov.iu.ir._
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.{FilePosition, InvertedIndex}
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.{NoTokenProcessor, TokenProcessor}
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
 
 /**
   * Index where each pair of tokens is a term.

@@ -4,8 +4,8 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval
 
-import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 import com.github.alexey_n_chernyshov.iu.ir.ast._
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 class BooleanRetrievalVisitor(index: SearchIndex) extends AbstractSyntaxTreeVisitor {
 

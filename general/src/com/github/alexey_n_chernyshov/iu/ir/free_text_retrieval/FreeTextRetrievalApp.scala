@@ -4,8 +4,8 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.free_text_retrieval
 
-import com.github.alexey_n_chernyshov.iu.ir.{RetrievalApp, SearchIndexPosition}
 import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.TfIdfDocumentPosition
+import com.github.alexey_n_chernyshov.iu.ir.{RetrievalApp, SearchIndexPosition}
 
 object FreeTextRetrievalApp extends RetrievalApp {
 

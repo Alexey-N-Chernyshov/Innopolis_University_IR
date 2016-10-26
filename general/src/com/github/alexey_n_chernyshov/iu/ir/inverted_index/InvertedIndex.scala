@@ -4,7 +4,6 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.inverted_index
 
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
 import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexPosition}
 
 /** Stores a list of occurrences of each term. */
