@@ -6,21 +6,9 @@ package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
 import java.util.Scanner
-
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
-
 import scala.collection.JavaConversions.asScalaIterator
 
-/** Builds index from given collection. */
 trait IndexBuilder {
-
-  var tokenProcessor: TokenProcessor
-
-  /**
-    * Returns index built on the given corpus.
-    * @param directory path to the directory with a set of documents.
-    */
-  def buildIndex(directory: String): SearchIndex
 
   /** Returns an array of files in a directory. */
   def getCollection(directory: String): Array[File] = {

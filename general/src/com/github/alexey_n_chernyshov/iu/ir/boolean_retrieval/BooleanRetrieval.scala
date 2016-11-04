@@ -5,7 +5,7 @@
 package com.github.alexey_n_chernyshov.iu.ir.boolean_retrieval
 
 import com.github.alexey_n_chernyshov.iu.ir.ast.QueryParser
-import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndexBuilder
+import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedSearchIndexBuilder
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
 import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndex, SearchIndexPosition}
 
@@ -23,7 +23,7 @@ class BooleanRetrieval(corpus: String) extends Retrieval {
 
   val queryParser = new QueryParser(tokenProcessor)
 
-  val invertedIndexBuilder = new InvertedIndexBuilder(tokenProcessor)
+  val invertedIndexBuilder = new InvertedSearchIndexBuilder(tokenProcessor)
   var index: SearchIndex = invertedIndexBuilder.buildIndex(corpus)
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {

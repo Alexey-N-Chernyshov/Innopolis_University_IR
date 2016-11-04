@@ -6,7 +6,7 @@ package com.github.alexey_n_chernyshov.iu.ir.free_text_retrieval
 
 import java.io.File
 
-import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.{TfIdfDocumentPosition, TfIdfIndex, TfIdfIndexBuilder}
+import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.{TfIdfDocumentPosition, TfIdfIndex, TfIdfSearchIndexBuilder}
 import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
 import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndexPosition}
 
@@ -16,7 +16,7 @@ class FreeTextRetrieval(corpus: String) extends Retrieval {
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()
 
-  val indexBuilder = new TfIdfIndexBuilder(tokenProcessor)
+  val indexBuilder = new TfIdfSearchIndexBuilder(tokenProcessor)
   var index: TfIdfIndex = indexBuilder.buildIndex(corpus).asInstanceOf[TfIdfIndex]
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {
