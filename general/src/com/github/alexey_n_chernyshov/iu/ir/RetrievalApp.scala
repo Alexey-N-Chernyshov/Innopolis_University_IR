@@ -6,19 +6,23 @@ package com.github.alexey_n_chernyshov.iu.ir
 
 import scala.io.StdIn.readLine
 
+/** Main console program for retrieval. */
 trait RetrievalApp {
 
   val retrievalName: String
   val retrievalModel: Retrieval
 
+  def printGreeting() = {
+    println(retrievalName + ".")
+  }
+
+  /** Prints results of query. */
   def printResult(res: Set[SearchIndexPosition]): Unit = {
     res.foreach(println(_))
   }
 
   def main(args: Array[String]): Unit = {
-    val corpus = "data/ex1"
-    println(retrievalName + ".")
-    println("Building corpus from " + corpus)
+    printGreeting()
 
     while (true) {
       print("\nInput query: ")

@@ -4,10 +4,10 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.tfidf_index
 
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
-import com.github.alexey_n_chernyshov.iu.ir.{SearchIndexBuilder, SearchIndex}
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.{TokenFilter, TokenProcessor}
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexBuilder}
 
-class TfIdfSearchIndexBuilder(var tokenProcessor: TokenProcessor) extends SearchIndexBuilder {
+class TfIdfSearchIndexBuilder(var tokenProcessor: TokenProcessor, var tokenFilter: TokenFilter) extends SearchIndexBuilder {
 
   override def buildIndex(directory: String): SearchIndex = {
     val index = new TfIdfIndex()
@@ -36,6 +36,7 @@ class TfIdfSearchIndexBuilder(var tokenProcessor: TokenProcessor) extends Search
         case (t, v) => index.addPosition(t, new TfIdfDocumentPosition(file, v))
       }
     }
+
     index
   }
 

@@ -18,6 +18,8 @@ project/plugins/project/
 general/out
 
 general/data/cache
+general/data/database.db
+general/data/livejournal
 
 # =========================
 # Operating System Files

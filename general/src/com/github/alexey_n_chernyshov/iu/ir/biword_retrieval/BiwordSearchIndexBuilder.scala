@@ -6,12 +6,12 @@ package com.github.alexey_n_chernyshov.iu.ir.biword_retrieval
 
 import com.github.alexey_n_chernyshov.iu.ir._
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.{FilePosition, InvertedIndex}
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.{TokenFilter, TokenProcessor}
 
 /**
   * Index where each pair of tokens is a term.
   */
-class BiwordSearchIndexBuilder(var tokenProcessor: TokenProcessor) extends SearchIndexBuilder {
+class BiwordSearchIndexBuilder(var tokenProcessor: TokenProcessor, var tokenFilter: TokenFilter) extends SearchIndexBuilder {
 
   /** Returns index built on the given corpus.
    * @param directory path to the directory with a set of documents.

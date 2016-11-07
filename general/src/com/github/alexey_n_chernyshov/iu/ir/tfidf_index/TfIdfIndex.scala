@@ -10,9 +10,10 @@ import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndex
 class TfIdfIndex extends InvertedIndex {
 
   val docFrequencies = scala.collection.mutable.Map[String, Int]()
-  var totalDocs = 0
+  var totalDocs = 0 // total documents in corpus
 
   def getCoordinates(terms: List[String]): Map[String, Double] = {
+    // count term frequency in terms list
     val vect = terms.foldLeft(Map.empty[String, Int]){ (count, word) => count + (word -> (count.getOrElse(word, 0) + 1)) }
       // filter terms that are both in query and documents (q AND d)
       .filterKeys(docFrequencies.contains(_))

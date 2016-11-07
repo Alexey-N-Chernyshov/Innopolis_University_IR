@@ -20,5 +20,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.liyaos:scala-forklift-slick_2.11:0.2.2-slick3.2" level="project" />
+    <orderEntry type="library" name="org.xerial:sqlite-jdbc:3.14.2.1" level="project" />
+    <orderEntry type="library" exported="" name="org.postgresql:postgresql:9.4.1209" level="project" />
   </component>
 </module>

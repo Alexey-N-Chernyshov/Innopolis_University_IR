@@ -5,24 +5,32 @@
 package com.github.alexey_n_chernyshov.iu.ir
 
 import java.io.File
-import java.util.Scanner
-import scala.collection.JavaConversions.asScalaIterator
+
+import scala.collection.mutable.ListBuffer
+import scala.io.Source
 
 trait IndexBuilder {
 
+  val delimeters = "[\\s\\*\\?!.,;:=\\-\"\\(\\)]"
+  var blackList = ListBuffer[String]()
+
   /** Returns an array of files in a directory. */
   def getCollection(directory: String): Array[File] = {
-    val d = new File(directory)
-    if (d.exists && d.isDirectory) {
-      d.listFiles.filter(_.isFile)
-    } else {
-      Array[File]()
-    }
+    getFilesRecursively(new File(directory)).filter(_.isFile).filter(!blackList.contains(_))
+  }
+
+  def getFilesRecursively(f: File): Array[File] = {
+    val res = f.listFiles
+    res ++ res.filter(_.isDirectory).flatMap(getFilesRecursively)
   }
 
   /** Returns set of tokens in a file. */
   def tokenizeFile(file: File): List[String] = {
-    new Scanner(file).map(_.trim).map(token => token.toLowerCase).toList
+    var res = ListBuffer[String]()
+    for (line <- Source.fromFile(file).getLines()) {
+      res ++= line.split(delimeters).map(_.trim).map(token => token.toLowerCase).toList
+    }
+    res.toList
   }
 
 }

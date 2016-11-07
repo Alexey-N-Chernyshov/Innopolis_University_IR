@@ -4,11 +4,11 @@
 
 package com.github.alexey_n_chernyshov.iu.ir.positional_index
 
-import com.github.alexey_n_chernyshov.iu.ir.{SearchIndexBuilder, SearchIndex}
+import com.github.alexey_n_chernyshov.iu.ir.{SearchIndex, SearchIndexBuilder}
 import com.github.alexey_n_chernyshov.iu.ir.inverted_index.InvertedIndex
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.{TokenFilter, TokenProcessor}
 
-class PositionalSearchIndexBuilder(var tokenProcessor: TokenProcessor) extends SearchIndexBuilder {
+class PositionalSearchIndexBuilder(var tokenProcessor: TokenProcessor, var tokenFilter: TokenFilter) extends SearchIndexBuilder {
 
   /**
     * Returns positional inverted index built on the given corpus.

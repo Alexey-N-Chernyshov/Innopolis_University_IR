@@ -6,18 +6,20 @@ package com.github.alexey_n_chernyshov.iu.ir.free_text_retrieval
 
 import java.io.File
 
-import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.{TfIdfDocumentPosition, TfIdfIndex, TfIdfSearchIndexBuilder}
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.NoTokenProcessor
-import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndexPosition}
+import com.github.alexey_n_chernyshov.iu.ir.tfidf_index.TfIdfDocumentPosition
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.{NoTokenFilter, NoTokenProcessor, StrangeSymbolFilter}
+import com.github.alexey_n_chernyshov.iu.ir.{Retrieval, SearchIndexBuilder, SearchIndexPosition}
+import com.github.alexey_n_chernyshov.iu.ir.tfidf_db_index.TfIdfDBSearchIndex
 
 /** Handles free text queries. */
-class FreeTextRetrieval(corpus: String) extends Retrieval {
+class FreeTextRetrieval(corpus: String, indexBuilder: SearchIndexBuilder) extends Retrieval {
 
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = new NoTokenProcessor()
+  val tokenFilter = new StrangeSymbolFilter(new NoTokenFilter())
 
-  val indexBuilder = new TfIdfSearchIndexBuilder(tokenProcessor)
-  var index: TfIdfIndex = indexBuilder.buildIndex(corpus).asInstanceOf[TfIdfIndex]
+//  val indexBuilder = new TfIdfSearchIndexBuilder(tokenProcessor, tokenFilter)
+  var index: TfIdfDBSearchIndex = indexBuilder.buildIndex(corpus).asInstanceOf[TfIdfDBSearchIndex]
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {
     val queryTokens = query.split(" ").map(tokenProcessor.processToken(_)).toList

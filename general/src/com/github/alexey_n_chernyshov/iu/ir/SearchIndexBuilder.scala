@@ -4,12 +4,13 @@
 
 package com.github.alexey_n_chernyshov.iu.ir
 
-import com.github.alexey_n_chernyshov.iu.ir.token_processing.TokenProcessor
+import com.github.alexey_n_chernyshov.iu.ir.token_processing.{TokenFilter, TokenProcessor}
 
 /** Builds index from given collection. */
 trait SearchIndexBuilder extends IndexBuilder {
 
   var tokenProcessor: TokenProcessor
+  var tokenFilter : TokenFilter
 
   /**
     * Returns index built on the given corpus.
