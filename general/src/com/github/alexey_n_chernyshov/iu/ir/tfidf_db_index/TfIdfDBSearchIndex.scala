@@ -178,6 +178,10 @@ class TfIdfDBSearchIndex extends SearchIndex {
     .map(r => new TfIdfDocumentPosition(new File(r._1), r._2)).toSet
   }
 
+  def getVocabularySize(): Int = {
+    docFrequencies.size
+  }
+
   override def getAllTerms(): Set[String] = {
     Set[String]()
   }
