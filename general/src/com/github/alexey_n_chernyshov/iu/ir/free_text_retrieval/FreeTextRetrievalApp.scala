@@ -11,11 +11,10 @@ import com.github.alexey_n_chernyshov.iu.ir.tfidf_db_index.{TfIdfDBIndexLoader, 
 
 object FreeTextRetrievalApp extends RetrievalApp {
 
-//  val corpus = "data/COHA"
-  val corpus = "data/lj"
+  val corpus = "data/ex1"
+//  val corpus = "data/lj"
   val tokenProcessor = new NoTokenProcessor()
   val tokenFilter = new StrangeSymbolFilter(new NoTokenFilter())
-//  val indexBuilder = new TfIdfDBSearchIndexBuilder(tokenProcessor, tokenFilter)
   val indexBuilder = new TfIdfDBIndexLoader(tokenProcessor, tokenFilter)
 
   override val retrievalName = "Free text retrieval"

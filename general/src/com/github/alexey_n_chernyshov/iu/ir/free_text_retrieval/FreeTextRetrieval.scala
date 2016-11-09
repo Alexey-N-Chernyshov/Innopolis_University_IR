@@ -15,8 +15,8 @@ import com.github.alexey_n_chernyshov.iu.ir.tfidf_db_index.TfIdfDBSearchIndex
 class FreeTextRetrieval(corpus: String, indexBuilder: SearchIndexBuilder) extends Retrieval {
 
   // defines how tokens are processed in indexBuilder and queries
-  val tokenProcessor = new NoTokenProcessor()
-  val tokenFilter = new StrangeSymbolFilter(new NoTokenFilter())
+  val tokenProcessor = indexBuilder.tokenProcessor
+  val tokenFilter = indexBuilder.tokenFilter
 
 //  val indexBuilder = new TfIdfSearchIndexBuilder(tokenProcessor, tokenFilter)
   var index: TfIdfDBSearchIndex = indexBuilder.buildIndex(corpus).asInstanceOf[TfIdfDBSearchIndex]
