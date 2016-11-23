@@ -14,6 +14,8 @@ import com.github.alexey_n_chernyshov.iu.ir.tfidf_db_index.TfIdfDBSearchIndex
 /** Handles free text queries. */
 class FreeTextRetrieval(corpus: String, indexBuilder: SearchIndexBuilder) extends Retrieval {
 
+  val delimeters = "[\\s\\*\\?!.,;:=\\-\"\\(\\)]"
+
   // defines how tokens are processed in indexBuilder and queries
   val tokenProcessor = indexBuilder.tokenProcessor
   val tokenFilter = indexBuilder.tokenFilter
@@ -22,7 +24,7 @@ class FreeTextRetrieval(corpus: String, indexBuilder: SearchIndexBuilder) extend
   var index: TfIdfDBSearchIndex = indexBuilder.buildIndex(corpus).asInstanceOf[TfIdfDBSearchIndex]
 
   def executeQuery(query: String): Set[SearchIndexPosition] = {
-    val queryTokens = query.split(" ").map(tokenProcessor.processToken(_)).toList
+    val queryTokens = query.split(delimeters).map(tokenProcessor.processToken(_)).toList
 
     val scores = scala.collection.mutable.Map[File, Double]()
     // compute VSM coordinates for the query
